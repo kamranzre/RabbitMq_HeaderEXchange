@@ -31,12 +31,7 @@ namespace Receiver2
                 var MsgArray = eventArg.Body.ToArray();
                 var body = Encoding.UTF8.GetString(MsgArray);
 
-                // eventArgدر Header راه برای بدست آوردن 
-                var subject = Encoding.UTF8.GetString(eventArg.BasicProperties.Headers["subject"] as byte[]);
-                var action = Encoding.UTF8.GetString(eventArg.BasicProperties.Headers["action"] as byte[]);
-
-                Console.WriteLine($"HeaderCreate:{subject}");
-                Console.WriteLine($"HeaderCreate:{action}");
+               
                 Console.WriteLine($"ReceiverCreate{body}");
                 channel.BasicAck(eventArg.DeliveryTag,true);
             };
